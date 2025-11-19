@@ -24,6 +24,43 @@ State Machine.
 
 ### Insurance Policy State Machine
 
-![Insurance Policy Lifecycle](insurance-policy-state.svg)
+```mermaid
+stateDiagram-v2
+    [*] --> InProgress: Create Application
 
-**Source**: [insurance-policy-state.puml](insurance-policy-state.puml)
+    InProgress --> Canceled: Cancel Policy
+    InProgress --> Calculated: Calculate Policy
+    InProgress --> Rejected: Reject Policy
+
+    Calculated --> InProgress: Any Use Case<br/>changing policy
+    Calculated --> Canceled: Cancel Policy
+    Calculated --> Active: Release Policy
+    Calculated --> ChangeOption: Offer Option
+
+    ChangeOption --> Calculated: Accept Option
+    ChangeOption --> Rejected: Reject Option (Implicit)
+
+    Active --> Canceled: Expiry / Cancel
+
+    Canceled --> InProgress: Reset Policy
+
+    Rejected --> [*]
+    Canceled --> [*]
+
+    note right of InProgress
+        Application created,
+        data being entered
+    end note
+
+    note right of Calculated
+        Risk/Premium calculated,
+        options available
+    end note
+
+    note right of Active
+        Policy is live
+        and valid
+    end note
+```
+
+**PlantUML Source**: [insurance-policy-state.puml](insurance-policy-state.puml)
