@@ -61,6 +61,20 @@ stateDiagram-v2
         Policy is live
         and valid
     end note
+
+    note left of Canceled
+        TERMINAL STATE
+        (with recovery option)
+        Can loop back to InProgress
+        via "Reset Policy"
+    end note
+
+    note right of Rejected
+        TERMINAL STATE
+        (permanent)
+        No recovery path,
+        policy permanently denied
+    end note
 ```
 
 **PlantUML Source**: [insurance-policy-state.puml](insurance-policy-state.puml)
