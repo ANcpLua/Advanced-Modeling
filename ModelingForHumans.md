@@ -133,9 +133,9 @@ The **C4 model** (by Simon Brown) is an abstraction-first approach to architectu
 
 ### Evening 1: Foundations
 
-* **[Kloc Digital Watch](1_Evening%201%20The%20Importance%20of%20Modeling/00-applied-practice-scenarios/01-kloc-digital-watch/)**:
+* **[Kloc Digital Watch](1_Evening%201%20The%20Importance%20of%20Modeling/01-kloc-digital-watch/)**:
   Find errors in a spec using State Machines.
-* **[Logistics Robotics](1_Evening%201%20The%20Importance%20of%20Modeling/00-applied-practice-scenarios/02-logistics-robotics-quality-check/)**:
+* **[Logistics Robotics](1_Evening%201%20The%20Importance%20of%20Modeling/02-logistics-robotics-quality-check/)**:
   Automated graph analysis for deadlocks.
 
 ### Evening 2: Diagram Overview
@@ -146,13 +146,13 @@ The **C4 model** (by Simon Brown) is an abstraction-first approach to architectu
   Model a safety-critical controller.
 * **[NASA Hybrid](2_Evening%202%20Diagram%20Overview/03-nasa-hybrid-diagrams/)**:
   Analyze a complex real-world engineering diagram.
-* **[ATM Context](2_Evening%202%20Diagram%20Overview/00-applied-practice-scenarios/02-atm-context-diagram/)**:
+* **[ATM Context](2_Evening%202%20Diagram%20Overview/04-atm-context-diagram/)**:
   Define system boundaries (DFD Level 0).
-* **[Insurance Policy](2_Evening%202%20Diagram%20Overview/00-applied-practice-scenarios/03-insurance-policy-lifecycle/)**:
+* **[Insurance Policy](2_Evening%202%20Diagram%20Overview/05-insurance-policy-lifecycle/)**:
   Model business object states (A-States).
-* **[AI Generation Prep](2_Evening%202%20Diagram%20Overview/00-applied-practice-scenarios/04-ai-generation-prep/)**:
+* **[AI Generation Prep](2_Evening%202%20Diagram%20Overview/06-ai-generation-prep/)**:
   Create a rigorous model for code generation.
-* **[Smart Home Hybrid](2_Evening%202%20Diagram%20Overview/00-applied-practice-scenarios/05-smart-home-hybrid/)**:
+* **[Smart Home Hybrid](2_Evening%202%20Diagram%20Overview/07-smart-home-hybrid/)**:
   Combine structure and behavior.
-* **[Class Diagram Check](2_Evening%202%20Diagram%20Overview/00-applied-practice-scenarios/06-class-diagram-self-check/)**:
+* **[Class Diagram Check](2_Evening%202%20Diagram%20Overview/08-class-diagram-self-check/)**:
   Test your knowledge of UML syntax.
