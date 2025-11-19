@@ -26,9 +26,42 @@ Create a State Machine Diagram that captures this logic.
 
 ### State Machine Diagram
 
-![Sliding Door State Machine](sliding-door-state-machine.svg)
+```mermaid
+stateDiagram-v2
+    [*] --> Closed
 
-**Source**: [sliding-door-state-machine.puml](sliding-door-state-machine.puml)
+    Closed --> Opening: Person Detected
+    Closed --> Locked: Key Turn (Lock)
+
+    Locked --> Closed: Key Turn (Unlock)
+
+    Opening --> Open: Door Fully Open
+    Opening --> Opening: Person Detected (Re-trigger)
+
+    Open --> Closing: Timeout (5s)
+    Open --> Open: Person Detected (Reset Timer)
+
+    Closing --> Opening: Person Detected
+    Closing --> Opening: Obstacle Detected
+    Closing --> Closed: Door Fully Closed
+
+    note right of Closing
+        SAFETY: Immediately reverses
+        to Opening if obstacle detected
+    end note
+
+    note right of Open
+        CONVENIENCE: Timer resets
+        if person detected
+    end note
+
+    note right of Locked
+        SECURITY: Only accessible
+        from Closed state
+    end note
+```
+
+**PlantUML Source**: [sliding-door-state-machine.puml](sliding-door-state-machine.puml)
 
 **Design Decisions:**
 
