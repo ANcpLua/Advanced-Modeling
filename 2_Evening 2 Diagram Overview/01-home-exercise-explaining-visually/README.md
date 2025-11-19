@@ -16,7 +16,7 @@
 
 ## Solution Example: "Pet Clinic Management System"
 
-*Since I am an AI, I have chosen a standard "Pet Clinic" system to demonstrate the visual explanation.*
+*Since I am an AI-- so human, I have chosen a standard "Pet Clinic" system to demonstrate the visual explanation.*
 
 ### 1. Context View (The Big Picture)
 
