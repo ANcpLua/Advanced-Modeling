@@ -75,7 +75,7 @@ graph TD
 | Exercise Name | Type | Source | Description |
 | :--- | :---: | :--- | :--- |
 | [Visual Explanation][visual-ex] | **Official** | [Slide 2][visual-slide] | Visualize a software system without using text. |
-| [Sliding Door][door-ex] | **Official** | *Class Video* | Model a safety-critical automatic door using a State Machine. |
+| [Sliding Door][door-ex] | **Official** | [Slide][door-slide] | Model a safety-critical automatic door using a State Machine. |
 | [NASA Hybrid][nasa-ex] | **Official** | [Slide 84][nasa-slide] | Analyze a real-world NASA diagram (Process + Deployment). |
 | [ATM Context][atm-ex] | Practice | [Slide 39][atm-slide] | Define system boundaries and external actors for an ATM. |
 | [Insurance Policy][ins-ex] | Practice | [Slide 78][ins-slide] | Model the A-States (Business Lifecycle) of an insurance policy. |
@@ -104,6 +104,7 @@ graph TD
 [visual-ex]: 2_Evening%202%20Diagram%20Overview/01-home-exercise-explaining-visually/
 [visual-slide]: 2_Evening%202%20Diagram%20Overview/01-home-exercise-explaining-visually/slides/visual_explanation_slide.png
 [door-ex]: 2_Evening%202%20Diagram%20Overview/02-class-practice-sliding-door/
+[door-slide]: 2_Evening%202%20Diagram%20Overview/02-class-practice-sliding-door/slides/sliding_door_slide.png
 [nasa-ex]: 2_Evening%202%20Diagram%20Overview/03-nasa-hybrid-diagrams/
 [nasa-slide]: 2_Evening%202%20Diagram%20Overview/03-nasa-hybrid-diagrams/slides/nasa_hybrid_slide.pdf
 [atm-ex]: 2_Evening%202%20Diagram%20Overview/04-atm-context-diagram/
