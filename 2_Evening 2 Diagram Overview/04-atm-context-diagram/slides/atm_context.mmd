@@ -1,0 +1,27 @@
+%%{init: {"flowchart": {"nodeSpacing": 80, "rankSpacing": 80}} }%%
+flowchart TD
+    %% System
+    System(ATM System)
+    
+    %% External Entities
+    Customer((Customer))
+    BankSystem[Bank Backend System]
+    ServiceTech((Service Technician))
+    SecuritySystem[Security/Alarm System]
+    
+    %% Data Flows - Customer
+    Customer -- Insert Card, Enter PIN, Amount --> System
+    System -- Cash, Receipt, Card, Screen Prompts --> Customer
+    
+    %% Data Flows - Bank Backend
+    System -- Transaction Request, PIN verification --> BankSystem
+    BankSystem -- Authorization, Account Balance, Daily Limits --> System
+    
+    %% Data Flows - Service Tech
+    ServiceTech -- Maintenance Key, Diagnostics Request --> System
+    System -- Error Logs, Cash Level Status --> ServiceTech
+    
+    %% Data Flows - Security
+    System -- Tamper Alert, Camera Feed --> SecuritySystem
+    
+    style System fill:#f9f,stroke:#333,stroke-width:2px,color:black

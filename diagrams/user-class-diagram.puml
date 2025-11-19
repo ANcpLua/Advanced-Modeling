@@ -1,0 +1,25 @@
+@startuml
+!theme plain
+skinparam classAttributeIconSize 0
+
+class User {
+    + UUID id
+    + String email {unique, pattern="^.+@.+\..+$"}
+    + String passwordHash
+    + String name
+    + DateTime createdAt
+    + Boolean isEmailVerified
+    + register(email, password, name)
+    + verifyEmail(token)
+    + changePassword(old, new)
+}
+
+class VerificationToken {
+    + UUID id
+    + String token {indexed}
+    + DateTime expiresAt
+    + isValid() : Boolean
+}
+
+User "1" *-- "0..1" VerificationToken : has >
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+class User {
+    + UUID id
+    + String email {unique, pattern="^.+@.+\..+$"}
+    + String passwordHash
+    + String name
+    + DateTime createdAt
+    + Boolean isEmailVerified
+    + register(email, password, name)
+    + verifyEmail(token)
+    + changePassword(old, new)
+}
+
+note right of User::passwordHash
+  Input password must be:
+  > 8 chars, 1 Upper, 1 Special
+  (Hashed using BCrypt)
+end note
+
+class VerificationToken {
+    + UUID id
+    + String token {indexed}
+    + DateTime expiresAt
+    + isValid() : Boolean
+}
+
+User "1" *-- "0..1" VerificationToken : has >
+@enduml

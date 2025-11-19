@@ -1,0 +1,32 @@
+@startuml
+title Insurance Policy Lifecycle
+hide empty description
+
+state "in progress" as InProgress
+state "calculated" as Calculated
+state "change option\npending" as ChangeOption
+state "active" as Active
+state "canceled" as Canceled
+state "rejected" as Rejected
+
+[*] --> InProgress : Create Application
+
+InProgress --> Canceled : Cancel Policy
+InProgress --> Calculated : Calculate Policy
+InProgress --> Rejected : Reject Policy
+
+Calculated --> InProgress : Any Use Case\nchanging policy
+Calculated --> Canceled : Cancel Policy
+Calculated --> Active : Release Policy
+Calculated --> ChangeOption : Offer Option
+
+ChangeOption --> Calculated : Accept Option
+ChangeOption --> Rejected : Reject Option (Implicit)
+
+Active --> Canceled : Expiry / Cancel
+
+Canceled --> InProgress : Reset Policy
+
+Rejected --> [*]
+Canceled --> [*]
+@enduml

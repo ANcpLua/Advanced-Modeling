@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# JetBrains IDEs (IntelliJ, Rider, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Gemini AI clipboard
+.gemini/
+.gemini-clipboard/
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*~
+
+# OS generated files
+Thumbs.db
+
+# Source slide PDFs (working directory)
+eachpdfisoneslide/

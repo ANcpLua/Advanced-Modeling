@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+actor "Pet Owner" as Owner
+actor "Veterinarian" as Vet
+
+rectangle "Clinic System" {
+  usecase "Book Appointment" as UC1
+  usecase "View Pet History" as UC2
+  usecase "Diagnose Pet" as UC3
+  usecase "Prescribe Medication" as UC4
+}
+
+Owner --> UC1
+Owner --> UC2
+Vet --> UC3
+Vet --> UC4
+UC3 ..> UC4 : <<precedes>>
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+!theme plain
+skinparam sequenceMessageAlign center
+
+actor Client
+participant "AuthController" as API
+participant "UserService" as Service
+participant "UserRepository" as DB
+participant "EmailService" as Mail
+
+Client -> API: POST /register {email, password, name}
+activate API
+
+API -> Service: registerUser(dto)
+activate Service
+
+Service -> DB: existsByEmail(email)
+activate DB
+DB --> Service: false
+deactivate DB
+
+alt Email already exists
+    Service --> API: Throw UserAlreadyExistsException
+    API --> Client: 409 Conflict
+else Email unique
+    Service -> Service: hashPassword(password)
+    Service -> Service: createVerificationToken()
+
+    Service -> DB: save(User, Token)
+    activate DB
+    DB --> Service: UserEntity
+    deactivate DB
+
+    Service -> Mail: sendVerificationEmail(email, token)
+    activate Mail
+    Mail --> Service: sent
+    deactivate Mail
+
+    Service --> API: UserDTO (without password)
+    deactivate Service
+
+    API --> Client: 201 Created
+    deactivate API
+end
+@enduml

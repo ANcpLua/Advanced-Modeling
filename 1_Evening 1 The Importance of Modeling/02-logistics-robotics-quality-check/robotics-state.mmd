@@ -1,0 +1,30 @@
+stateDiagram-v2
+    direction LR
+    
+    [*] --> U
+    
+    U --> V : a
+    U --> X : c
+    
+    %% Missing label in text, assuming simple transition
+    V --> W 
+    
+    W --> U : b
+    W --> Z : a
+    
+    Z --> Y : b
+    
+    %% Non-determinism: Two transitions with label 'd' from Z
+    Z --> T : d
+    Z --> Q : d
+    
+    T --> Q : c
+    
+    %% Missing labels in text
+    X --> R
+    R --> K
+    
+    K --> L
+    L --> K
+    
+    %% Q is a dead end (no outgoing transitions)

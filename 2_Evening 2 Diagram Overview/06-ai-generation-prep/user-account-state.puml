@@ -1,0 +1,15 @@
+@startuml
+state "Unverified" as Unverified
+state "Active" as Active
+state "Locked" as Locked
+
+[*] --> Unverified : Register
+
+Unverified --> Active : Verify Email [token valid]
+Unverified --> [*] : Token Expired (Cleanup)
+
+Active --> Locked : Failed Login > 5 attempts
+Locked --> Active : Admin Unlock / Password Reset
+
+Active --> [*] : Delete Account
+@enduml

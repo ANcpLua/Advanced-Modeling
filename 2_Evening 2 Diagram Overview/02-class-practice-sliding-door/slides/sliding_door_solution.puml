@@ -1,0 +1,27 @@
+@startuml
+title Sliding Door State Machine
+hide empty description
+
+state Closed
+state Opening
+state Open
+state Closing
+state Locked
+
+[*] --> Closed
+
+Closed --> Opening : Person Detected
+Closed --> Locked : Key Turn (Lock)
+
+Locked --> Closed : Key Turn (Unlock)
+
+Opening --> Open : Door Fully Open
+Opening --> Opening : Person Detected (Re-trigger)
+
+Open --> Closing : Timeout (5s)
+Open --> Open : Person Detected (Reset Timer)
+
+Closing --> Opening : Person Detected
+Closing --> Opening : Obstacle Detected
+Closing --> Closed : Door Fully Closed
+@enduml

@@ -1,0 +1,73 @@
+@startuml
+hide empty description
+title Kloc Digital Watch - State Machine
+
+[*] --> TimeDisplay
+
+state "Time Display" as TimeDisplay {
+    TimeDisplay : Display HH:MM:SS
+}
+
+state "Time Set Mode" as TimeSet {
+    state "Set Hours" as SetHour
+    state "Set Minutes" as SetMin
+    state "Set Seconds" as SetSec
+
+    [*] --> SetHour
+
+    SetHour --> SetMin : SET
+    SetMin --> SetSec : SET
+    SetSec --> SetHour : SET
+
+    SetHour : UP increments hour
+    SetHour : Hours flash
+
+    SetMin : UP increments minute
+    SetMin : Minutes flash
+
+    SetSec : UP resets seconds
+    SetSec : Seconds flash
+}
+
+state "Alarm Set Mode" as AlarmSet {
+    state "Set Alarm Hour" as SetAHour
+    state "Set Alarm Min" as SetAMin
+
+    [*] --> SetAHour
+    SetAHour --> SetAMin : SET
+    SetAMin --> SetAHour : SET
+
+    SetAHour : UP increments hour
+}
+
+state "Alarm Activation" as AlarmActive {
+    AlarmActive : UP toggles On/Off
+}
+
+' Transitions between main modes
+TimeDisplay --> TimeSet : MODE
+TimeDisplay --> AlarmSet : SET
+TimeDisplay --> AlarmActive : UP
+
+' "Return by same button" logic (Contradicted by SET behavior)
+TimeSet --> TimeDisplay : MODE
+AlarmSet --> TimeDisplay : SET
+AlarmActive --> TimeDisplay : UP
+
+' Issues visualized
+note right of TimeSet
+  Error: Ambiguity/Conflict
+  If SET is used to switch sub-states (Hour->Min),
+  how can it also be used to exit the mode?
+  Requirement "Return by same button" conflicts
+  with internal navigation.
+end note
+
+note top of AlarmActive
+  Error: Missing Transition
+  Can you go from AlarmSet directly to AlarmActive?
+  Requirements implies TimeDisplay is the hub,
+  but flow is inefficient.
+end note
+
+@enduml

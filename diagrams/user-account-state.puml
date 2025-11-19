@@ -1,0 +1,22 @@
+@startuml
+!theme plain
+skinparam state {
+    BackgroundColor<<Unverified>> LightYellow
+    BackgroundColor<<Active>> LightGreen
+    BackgroundColor<<Locked>> LightCoral
+}
+
+state "Unverified" as Unverified <<Unverified>>
+state "Active" as Active <<Active>>
+state "Locked" as Locked <<Locked>>
+
+[*] --> Unverified : Register
+
+Unverified --> Active : Verify Email [token valid]
+Unverified --> [*] : Token Expired (Cleanup)
+
+Active --> Locked : Failed Login > 5 attempts
+Locked --> Active : Admin Unlock / Password Reset
+
+Active --> [*] : Delete Account
+@enduml

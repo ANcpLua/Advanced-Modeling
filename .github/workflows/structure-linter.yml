@@ -1,0 +1,27 @@
+name: Structure & Lint
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v9
+        with:
+          globs: "**/*.md"
+
+  validate-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check Folder Structure
+        run: |
+          if [ ! -d "1_Evening 1 The Importance of Modeling" ]; then echo "Missing Evening 1"; exit 1; fi
+          if [ ! -d "2_Evening 2 Diagram Overview" ]; then echo "Missing Evening 2"; exit 1; fi
+          echo "Structure Validated"

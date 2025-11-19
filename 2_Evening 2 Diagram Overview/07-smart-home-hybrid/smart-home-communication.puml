@@ -1,0 +1,56 @@
+@startuml
+title Communication Diagram: Turn On Lights
+allow_mixing
+
+' Styling for Heatmap (Red = High Traffic, Green = Low Traffic)
+skinparam noteBackgroundColor #Yellow
+
+object ":User" as User
+object ":VoiceAssistant" as Alexa
+object ":HubController" as Hub
+object ":SmartBulb" as Bulb
+object ":CloudService" as Cloud
+
+' Structural Links with Heatmap annotations
+User -- Alexa : "Voice Input"
+note on link
+  Heatmap: LOW
+  (Human interaction speed)
+end note
+
+Alexa -- Cloud : "Internet"
+note on link
+  Heatmap: HIGH
+  (Constant audio stream/ping)
+end note
+
+Cloud -- Hub : "Command API"
+note on link
+  Heatmap: MEDIUM
+end note
+
+Hub -- Bulb : "Zigbee/Z-Wave"
+note on link
+  Heatmap: LOW
+  (Status updates only)
+end note
+
+' Behavioral Messages
+' 1. User speaks
+User -> Alexa : 1: "Turn on lights"
+
+' 2. Processing
+Alexa -> Cloud : 2: ProcessVoiceCommand(audio)
+Cloud -> Cloud : 3: IdentifyDevice("Living Room")
+
+' 3. Command Execution
+Cloud -> Hub : 4: SendCommand(LightID, ON)
+Hub -> Bulb : 5: SetState(ON)
+
+' 4. Feedback
+Bulb --> Hub : 6: Ack
+Hub --> Cloud : 7: Success
+Cloud --> Alexa : 8: TextResponse("OK")
+Alexa -> User : 9: "OK"
+
+@enduml
