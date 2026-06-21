@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Generate PlantUML diagrams
-        uses: grassedge/generate-plantuml-action@v1.5
+        uses: grassedge/generate-plantuml-action@4936762686b831393728392054322cfde20645e8 # v1.5
         with:
           path: .
           message: "Auto-generate PlantUML diagrams [skip ci]"
